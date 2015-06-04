@@ -1,0 +1,10 @@
+/* line 1, ../../sass/partials/base.scss */
+html, body {
+  background: black;
+  text-align: center;
+}
+
+/* line 6, ../../sass/partials/base.scss */
+h1 {
+  color: white;
+}

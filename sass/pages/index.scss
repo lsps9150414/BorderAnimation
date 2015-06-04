@@ -1,0 +1,307 @@
+@import 'utilities/layouts';
+
+.cards {
+  @extend %flexContainer;
+  padding: 50px;
+
+  .cardWrapper {
+    position: relative;
+    flex: 1;
+    max-width: 2em;
+    margin: 0 10px;
+    font-size: 140px;
+    overflow: hidden;
+
+    .cardBordersContainer {
+
+      %cardBorder-vertical {
+        width: 1px;
+        height: 100%;
+      }
+      %cardBorder-horizontal {
+        width: 100%;
+        height: 1px;
+      }
+
+      .border-top,
+      .border-bottom,
+      .border-right,
+      .border-left {
+        position: absolute;
+        transition: all .6s ease-out;
+
+        &:before, &:after {
+          position: absolute;
+          display: block;
+          content: "";
+          top: 0;
+          left: 0;
+          background: white;
+          transition: all .6s ease-out;
+        }
+      }
+      .border-top {
+        @extend %cardBorder-horizontal;
+        top: 0;
+        left: 0%;
+
+        &:before, &:after {
+          @extend %cardBorder-horizontal;
+        }
+        &:after {
+          left: 200%;
+        }
+      }
+      .border-bottom {
+        @extend %cardBorder-horizontal;
+        bottom: 0;
+        left: 0%;
+
+        &:before, &:after {
+          @extend %cardBorder-horizontal;
+        }
+        &:after {
+          left: -200%;
+        }
+      }
+      .border-right {
+        @extend %cardBorder-vertical;
+        top: 0;
+        right: 0;
+
+        &:before, &:after {
+          @extend %cardBorder-vertical;
+        }
+        &:after {
+          top: 200%;
+        }
+      }
+      .border-left {
+        @extend %cardBorder-vertical;
+        top: 0;
+        left: 0;
+
+        &:before, &:after {
+          @extend %cardBorder-vertical;
+        }
+        &:after {
+          top: -200%;
+        }
+      }
+    }
+
+    &.cardBorder-effect-1:hover {
+      .cardContent {
+        background: transparent;
+        transition-delay: 0s;
+      }
+      .cardContent-title {
+        color: white;
+        transition-delay: 0s !important;
+      }
+      .border-top {
+        transform: translateX(-200%);
+      }
+      .border-bottom {
+        transform: translateX(200%);
+      }
+      .border-right {
+        transform: translateY(-200%);
+      }
+      .border-left {
+        transform: translateY(200%);
+      }
+      .border-top,
+      .border-bottom,
+      .border-right,
+      .border-left {
+        transition-delay: .3s !important;
+      }
+    }
+
+    &.cardBorder-effect-2:hover {
+      %cardBorder-hoverEffect-color {
+        color: #f0ce13;
+        &:before, &:after {
+          background: #f0ce13;
+        }
+      }
+
+      .cardContent {
+        background: transparent;
+        transition-delay: 0s;
+      }
+      .cardContent-title {
+        transition-delay: 0s !important;
+        @extend %cardBorder-hoverEffect-color;
+      }
+      .border-top {
+        transform: translateX(-200%);
+        @extend %cardBorder-hoverEffect-color;
+      }
+      .border-bottom {
+        transform: translateX(200%);
+        @extend %cardBorder-hoverEffect-color;
+      }
+      .border-right {
+        transform: translateY(-200%);
+        @extend %cardBorder-hoverEffect-color;
+      }
+      .border-left {
+        transform: translateY(200%);
+        @extend %cardBorder-hoverEffect-color;
+      }
+      .border-top,
+      .border-bottom,
+      .border-right,
+      .border-left {
+        transition-delay: .3s !important;
+        &:before, &:after {
+          transition-delay: 0.3s !important;
+        }
+      }
+    }
+
+    &.cardBorder-effect-3:hover {
+      %cardBorder-hoverEffect-bodrerWidth {
+        &:before, &:after {
+          width: 50px;
+        }
+      }
+      %cardBorder-hoverEffect-bodrerHeight {
+        &:before, &:after {
+          height: 50px;
+        }
+      }
+
+      .cardContent {
+        background: transparent;
+        transition-delay: 0s;
+      }
+      .cardContent-title {
+        color: white;
+        transition-delay: 0s !important;
+      }
+      .border-top {
+        transform: translateX(-200%);
+        @extend %cardBorder-hoverEffect-bodrerHeight;
+      }
+      .border-bottom {
+        transform: translateX(200%) translateY(-49px);
+        @extend %cardBorder-hoverEffect-bodrerHeight;
+      }
+      .border-right {
+        transform: translateY(-200%) translateX(-49px);
+        @extend %cardBorder-hoverEffect-bodrerWidth;
+      }
+      .border-left {
+        transform: translateY(200%);
+        @extend %cardBorder-hoverEffect-bodrerWidth;
+      }
+      .border-top,
+      .border-bottom,
+      .border-right,
+      .border-left {
+        transition-delay: 0.3s !important;
+        &:before, &:after {
+          transition-delay: 0.3s !important;
+        }
+      }
+    }
+
+    &.cardBorder-effect-4 {
+      .border-top,
+      .border-bottom,
+      .border-right,
+      .border-left {
+        transition: all 0.2s ease-out;
+        &::after, &::before {
+          transition: all 0.2s ease-out;
+        }
+      }
+
+      .border-top {
+        &:after {
+          left: 160%;
+        }
+      }
+      .border-bottom {
+        &:after {
+          left: -160%;
+        }
+      }
+      .border-right {
+        &:after {
+          top: 160%;
+        }
+      }
+      .border-left {
+        &:after {
+          top: -160%;
+        }
+      }
+
+      &:hover {
+        %cardBorder-hoverEffect-bodrerWidth {
+          &:before, &:after {
+            width: 20px;
+          }
+        }
+        %cardBorder-hoverEffect-bodrerHeight {
+          &:before, &:after {
+            height: 20px;
+          }
+        }
+
+        .cardContent {
+          background: transparent;
+          transition-delay: 0s;
+        }
+        .cardContent-title {
+          color: white;
+          transition-delay: 0s !important;
+        }
+        .border-top {
+          transform: translateX(-80%);
+          @extend %cardBorder-hoverEffect-bodrerHeight;
+        }
+        .border-bottom {
+          transform: translateX(80%);
+          bottom: 19px;
+          @extend %cardBorder-hoverEffect-bodrerHeight;
+        }
+        .border-right {
+          transform: translateY(-80%);
+          right: 19px;
+          @extend %cardBorder-hoverEffect-bodrerWidth;
+        }
+        .border-left {
+          transform: translateY(80%);
+          @extend %cardBorder-hoverEffect-bodrerWidth;
+        }
+        .border-top,
+        .border-bottom,
+        .border-right,
+        .border-left {
+          transition-delay: 0.3s !important;
+          &:before, &:after {
+            transition-delay: 0.3s !important;
+          }
+        }
+      }
+    }
+    .cardContent {
+      margin: 3px;
+      height: 2em;
+      background: white;
+      transition: background .6s .3s;
+
+      .cardContent-title {
+        text-align: center;
+        line-height: 2.2em;
+        font-family: 'Ruthie', cursive;
+        transition: color .6s .3s;
+      }
+    }
+  }
+}
